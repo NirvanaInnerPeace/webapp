@@ -2,8 +2,6 @@
 const nextConfig = {
   output: 'export',
   distDir: 'dist',
-  basePath: '/webapp',
-  assetPrefix: '/webapp',
   images: {
     unoptimized: true,
   },
