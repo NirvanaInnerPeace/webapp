@@ -37,12 +37,9 @@ export default function Navigation() {
     return `../${anchor}`;
   };
 
-  // Logo href - use relative for subpages
+  // Logo href - use root path for custom domain
   const getLogoHref = () => {
-    if (isHomePage) {
-      return "/webapp/";
-    }
-    return "../";
+    return "/";
   };
 
   return (
