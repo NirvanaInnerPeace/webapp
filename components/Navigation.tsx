@@ -17,7 +17,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === "/" || pathname === "/index.html";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,12 +28,21 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Function to get the correct href based on current page
+  // For GitHub Pages with basePath, use relative paths from subpages
   const getHref = (anchor: string) => {
     if (isHomePage) {
       return anchor;
     }
-    return `/${anchor}`;
+    // When on subpages (privacy, terms), go up one level to home then to anchor
+    return `../${anchor}`;
+  };
+
+  // Logo href - use relative for subpages
+  const getLogoHref = () => {
+    if (isHomePage) {
+      return "/webapp/";
+    }
+    return "../";
   };
 
   return (
@@ -50,7 +59,7 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3">
+            <a href={getLogoHref()} className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-nirvana-jade to-nirvana-cyan flex items-center justify-center">
                 <span className="text-white font-bold">N</span>
               </div>
