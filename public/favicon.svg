@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="50%" style="stop-color:#00a86b"/>
+      <stop offset="100%" style="stop-color:#c9a227"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle cx="50" cy="50" r="42" fill="none" stroke="url(#ringGradient)" stroke-width="8" filter="url(#glow)"/>
+
+  <!-- Inner ring detail -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="url(#ringGradient)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Center glow -->
+  <circle cx="50" cy="50" r="20" fill="url(#ringGradient)" opacity="0.15"/>
+
+  <!-- Center symbol (stylized N/ॐ hybrid) -->
+  <text x="50" y="58" font-family="serif" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle" opacity="0.9">ॐ</text>
+
+  <!-- Decorative dots representing sensors -->
+  <circle cx="50" cy="12" r="3" fill="#00d4ff"/>
+  <circle cx="85" cy="50" r="3" fill="#00a86b"/>
+  <circle cx="50" cy="88" r="3" fill="#c9a227"/>
+</svg>

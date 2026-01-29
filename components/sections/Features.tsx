@@ -1,0 +1,117 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Brain, Moon, Heart, Sparkles, Zap, Shield } from 'lucide-react'
+import FadeIn from '../animations/FadeIn'
+
+const features = [
+  {
+    icon: Moon,
+    title: 'Lucid Dreaming',
+    sanskrit: 'स्वप्न जाग्रत',
+    description: 'Advanced REM detection triggers subtle cues—flashing lights, sacred sounds, gentle vibrations—to awaken consciousness within your dreams.',
+    color: 'from-nirvana-purple to-nirvana-cyan',
+  },
+  {
+    icon: Heart,
+    title: 'Vitality Tracking',
+    sanskrit: 'प्राण मापन',
+    description: 'Continuous HRV, temperature, and accelerometer monitoring for complete insight into your body\'s rhythms and recovery.',
+    color: 'from-nirvana-jade to-nirvana-cyan',
+  },
+  {
+    icon: Brain,
+    title: 'Mindful AI',
+    sanskrit: 'बुद्धिमत्ता',
+    description: 'Personalized meditation guidance based on your biometric patterns, helping you find stillness when you need it most.',
+    color: 'from-nirvana-cyan to-nirvana-jade',
+  },
+  {
+    icon: Sparkles,
+    title: 'Sleep Alchemy',
+    sanskrit: 'निद्रा रसायन',
+    description: 'Transform ordinary sleep into restorative practice. Optimize sleep cycles for longevity, clarity, and emotional resilience.',
+    color: 'from-nirvana-gold to-nirvana-amber',
+  },
+  {
+    icon: Zap,
+    title: 'Energy Flow',
+    sanskrit: 'शक्ति प्रवाह',
+    description: 'Understand your circadian rhythms and energy patterns. Align your activities with your body\'s natural wisdom.',
+    color: 'from-nirvana-amber to-nirvana-gold',
+  },
+  {
+    icon: Shield,
+    title: 'Sacred Privacy',
+    sanskrit: 'गोपनीयता',
+    description: 'Your biometric data is encrypted and yours alone. No subscriptions, no data selling—just pure, private wellness.',
+    color: 'from-nirvana-jade-dark to-nirvana-jade',
+  },
+]
+
+export default function Features() {
+  return (
+    <section id="features" className="relative py-32 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 mandala-pattern opacity-50" />
+      <motion.div
+        className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-nirvana-purple/5 blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <FadeIn className="text-center mb-20">
+          <span className="text-nirvana-gold text-sm tracking-widest uppercase mb-4 block">
+            The Eightfold Path to Wellness
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="text-white">Sacred </span>
+            <span className="gradient-text">Technology</span>
+          </h2>
+          <p className="max-w-2xl mx-auto text-lg text-white/60">
+            Ancient practices meet precision engineering. Each feature is designed
+            to guide you toward higher consciousness and longer life.
+          </p>
+        </FadeIn>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <FadeIn key={feature.title} delay={index * 0.1}>
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="group relative h-full"
+              >
+                <div className="relative h-full p-8 rounded-2xl glass-card glow-border overflow-hidden">
+                  {/* Gradient Background on Hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+
+                  {/* Icon */}
+                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} p-0.5 mb-6`}>
+                    <div className="w-full h-full rounded-xl bg-nirvana-dark flex items-center justify-center">
+                      <feature.icon className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-semibold text-white mb-1">{feature.title}</h3>
+                  <p className="text-nirvana-gold/60 text-sm mb-3 font-light tracking-wider">{feature.sanskrit}</p>
+                  <p className="text-white/60 leading-relaxed text-sm">{feature.description}</p>
+
+                  {/* Decorative Corner */}
+                  <div className="absolute top-4 right-4 w-8 h-8 border-t border-r border-white/10 rounded-tr-lg" />
+                </div>
+              </motion.div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
